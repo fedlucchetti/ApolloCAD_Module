@@ -1,0 +1,12 @@
+module_config {
+    module_library : "/apollo/bazel-bin/modules/network/libnetwork_component.so"
+
+    timer_components {
+        class_name : "NetworkComponent"
+        config {
+            name: "network"
+            flag_file_path: "/apollo/modules/network/conf/network.conf"
+            interval: 100
+        }
+    }
+}

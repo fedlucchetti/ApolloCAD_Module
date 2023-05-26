@@ -1,0 +1,7 @@
+<cyber>
+    <module>
+        <name>network</name>
+        <dag_conf>/apollo/modules/network/dag/network.dag</dag_conf>
+        <process_name>network</process_name>
+    </module>
+</cyber>

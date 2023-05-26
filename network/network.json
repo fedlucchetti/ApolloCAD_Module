@@ -1,0 +1,49 @@
+{
+    "linux_distribution": "Ubuntu 18.04.5 LTS",
+    "kernal": "Linux 5.4.0-42-generic",
+    "arch": "x86_64",
+    "image": "registry.baidubce.com/apollo/apollo-env-gpu:0.0.4-dev",
+    "apollo_distribution": "neo",
+    "package_info": {
+        "type": "local",
+        "source": "/apollo_workspace/modules/network",
+        "build_ops": [ ]
+    },
+    "release_detail": {
+        "name": "network",
+        "ver": "1.0.0.3",
+        "arch": "amd64",
+        "description": "Apollo network module.",
+        "deps": [
+            "cyber-dev", "common-dev", "common-msgs-dev",
+            "localization-dev", "3rd-gflags-dev", "3rd-gtest-dev",
+            "3rd-eigen3-dev", "3rd-absl-dev", "3rd-osqp-dev", 
+            "bazel-extend-tools-dev", "3rd-rules-python-dev", "3rd-grpc-dev", "3rd-bazel-skylib-dev", 
+            "3rd-rules-proto-dev", "3rd-py-dev"
+        ],
+        "preinst_extend_ops": [ ],
+        "postinst_extend_ops": [
+            "if [ ! -f /apollo/LICENSE ]; then mkdir -p /apollo/modules/network; fi",
+            "if [ ! -f /apollo/LICENSE ]; then chmod a+rw /apollo/modules/network; fi",
+
+            "if [ ! -f /apollo/LICENSE ]; then rm -rf /apollo/modules/network/conf; fi",
+            "if [ ! -f /apollo/LICENSE ]; then rm -rf /apollo/modules/network/data; fi",
+            "if [ ! -f /apollo/LICENSE ]; then rm -rf /apollo/modules/network/dag; fi",
+            "if [ ! -f /apollo/LICENSE ]; then rm -rf /apollo/modules/network/launch; fi",
+            "if [ ! -f /apollo/LICENSE ]; then ln -snf /opt/apollo/neo/packages/network-dev/latest/conf /apollo/modules/network/conf; fi",
+            "if [ ! -f /apollo/LICENSE ]; then ln -snf /opt/apollo/neo/packages/network-dev/latest/data /apollo/modules/network/data; fi",
+            "if [ ! -f /apollo/LICENSE ]; then ln -snf /opt/apollo/neo/packages/network-dev/latest/dag /apollo/modules/network/dag; fi",
+            "if [ ! -f /apollo/LICENSE ]; then ln -snf /opt/apollo/neo/packages/network-dev/latest/launch /apollo/modules/network/launch; fi",
+            "if [ ! -f /apollo/LICENSE ]; then for i in $(ls /opt/apollo/neo/packages/network-dev/latest/addition_data); do ln -snf  /opt/apollo/neo/packages/network-dev/latest/addition_data/\"$i\" /apollo/modules/network/\"$i\"; done; fi",
+            "if [ -d /opt/apollo/neo/packages/common-dev/latest/python ]; then rsync  -avr --whole-file --progress /opt/apollo/neo/packages/common-dev/latest/python/ /opt/apollo/neo/python; fi"
+        ],
+        "prerm_extend_ops": [ ],
+        "postrm_extend_ops": [ ],
+        "data": [
+            {
+                "src": "network-dev/local",
+                "des": "-"
+            }
+        ]
+    }
+}

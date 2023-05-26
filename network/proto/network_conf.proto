@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package apollo.network;
+
+
+
+message NetworkConf {
+  optional int32 example_1 = 1;
+  optional float example_2 = 2;
+  optional string example_3 = 3;
+  optional bool  example_4 = 4;
+
+
+}
